@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+     <header class="jumbotron">
+         <div class="container">
+             <h1><span class="glyphicon glyphicon-tent"></span> Welcome To Party Planner!</h1>
+             <p>View our hand-picked parties near you!</p>
+             <p>
+                <a class="btn btn-primary btn-lg" href="/party/new">Add New party</a>
+             </p>
+              <p>
+              <form action="/party" method="GET" class="form-inline" id="party-search">
+                <div class="form-group">
+                  <input type="text" name="search" placeholder="party search..." class="form-control">
+                </div>
+              </form>
+             </p>
+         </div>
+     </header>
+
+     <div class="row text-center" id="party-grid">
+        <% party.forEach(function(party){ %>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="card">
+                  <img class="card-img-top" src="<%= party.image %>" alt="<%= party.name %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%= party.name %></h5>
+                    <a href="/party/<%= party._id %>" class="btn btn-primary">More Info</a>
+                  </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+<% include ../partials/footer %>
